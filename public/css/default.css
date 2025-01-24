@@ -1,0 +1,29 @@
+/* main */
+body {
+    font-family: "Open Sans", serif;
+    font-size: 16px;
+}
+
+.df {
+    font-family: "Press Start 2P", serif;
+}
+
+a {
+    color: #990000;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #000000;
+}
+
+/* alerts */
+.mainAlert {
+    position: absolute;
+    max-width: 600px;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    top: 100px;
+}
