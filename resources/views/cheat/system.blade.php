@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Cheats</h1>
+        <h1>{{ $system->name }}</h1>
         <table
             id="table"
             data-pagination="false"
@@ -16,18 +16,25 @@
             <tr>
                 <th scope="col" data-field="id" data-sortable="true">#</th>
                 <th scope="col" data-field="name" data-sortable="true">Name</th>
+                <th scope="col" data-field="device" data-sortable="true">Device</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($systems as $system)
+            @foreach($games as $game)
                 <tr>
                     <td>
-                        {{ $system->id }}
+                        {{ $game->id }}
                     </td>
                     <td>
-                        <a href="{{ route('cheats-systems', $system->id) }}">
-                            {{ $system->name }}
+                        <a href="{{ route('cheats-game', $game->id) }}">
+                            {{ $game->name }}
                         </a>
+                    </td>
+                    <td>
+                        @php
+                        $device = \App\Models\Cheat::getDevice($game->device_id);
+                        @endphp
+                        {{ $device->name }}
                     </td>
                 </tr>
             @endforeach

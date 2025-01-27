@@ -5,8 +5,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\PageController::class, 'view'])->name('home');
 
 Route::get('/cheats', [App\Http\Controllers\CheatController::class, 'index'])->name('cheats');
+Route::get('/cheats/system/{id}', [App\Http\Controllers\CheatController::class, 'system'])->name('cheats-systems');
+Route::any('/cheats/game/{id}', [App\Http\Controllers\CheatController::class, 'game'])->name('cheats-game');
+Route::any('/cheats/download', [App\Http\Controllers\CheatController::class, 'download'])->name('cheats-download');
 
 Route::get('/forums', [App\Http\Controllers\ForumController::class, 'index'])->name('forums');
+Route::get('/forums/category/{id}', [App\Http\Controllers\ForumController::class, 'category'])->name('forum-category');
+Route::get('/forums/topics/{id}', [App\Http\Controllers\ForumController::class, 'topics'])->name('forum-topics');
+Route::get('/forums/topic/{id}', [App\Http\Controllers\ForumController::class, 'topic'])->name('forum-topic');
 
 require __DIR__.'/auth.php';
 Auth::routes();
