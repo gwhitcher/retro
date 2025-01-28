@@ -33,7 +33,7 @@ class CheatController extends Controller
     public function system($id)
     {
         $system = Cheat::getSystem($id);
-        $games = Cheat::getGames($id);
+        $games = Cheat::getGamesBySystemID($id);
         return view('cheat.system')
             ->with([
                 'system' => $system,

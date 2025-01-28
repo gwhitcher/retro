@@ -64,6 +64,24 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('admin-users') }}">{{ __('Users') }}</a>
                                     </li>
+                                    <hr class="my-3"/>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin-cheat-systems') }}">{{ __('Systems') }}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin-cheat-games') }}">{{ __('Games') }}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin-cheat-devices') }}">{{ __('Devices') }}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('admin-cheat-codes') }}">{{ __('Codes') }}</a>
+                                    </li>
+                                    <hr class="my-3"/>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('home') }}">{{ __('Frontend') }}</a>
+                                    </li>
+                                    <hr class="my-3"/>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('home') }}">{{ __('Frontend') }}</a>
                                     </li>

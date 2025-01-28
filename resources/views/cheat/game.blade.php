@@ -51,6 +51,7 @@
                     <div class="text-end">
                         <input type="hidden" name="game_id" value="{{ $game->id }}" />
                         <select name="type" class="form-control">
+                            <option value="cht_ra">CHT (RetroArch)</option>
                             <option value="cht">CHT</option>
                             <option value="txt">TXT</option>
                             <option value="json">JSON</option>

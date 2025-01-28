@@ -27,6 +27,26 @@ Route::any('/admin/pages/add', [App\Http\Controllers\Admin\PageController::class
 Route::any('/admin/pages/edit/{id}', [App\Http\Controllers\Admin\PageController::class, 'edit'])->name('admin-page-edit');
 Route::any('/admin/pages/delete/{id}', [App\Http\Controllers\Admin\PageController::class, 'delete'])->name('admin-page-delete');
 
+Route::any('/admin/cheats/systems', [App\Http\Controllers\Admin\CheatController::class, 'system'])->name('admin-cheat-systems');
+Route::any('/admin/cheats/systems/add', [App\Http\Controllers\Admin\CheatController::class, 'systemAdd'])->name('admin-cheat-system-add');
+Route::any('/admin/cheats/systems/edit/{id}', [App\Http\Controllers\Admin\CheatController::class, 'systemEdit'])->name('admin-cheat-system-edit');
+Route::any('/admin/cheats/systems/delete/{id}', [App\Http\Controllers\Admin\CheatController::class, 'systemDelete'])->name('admin-cheat-system-delete');
+
+Route::any('/admin/cheats/games', [App\Http\Controllers\Admin\CheatController::class, 'game'])->name('admin-cheat-games');
+Route::any('/admin/cheats/games/add', [App\Http\Controllers\Admin\CheatController::class, 'gameAdd'])->name('admin-cheat-game-add');
+Route::any('/admin/cheats/games/edit/{id}', [App\Http\Controllers\Admin\CheatController::class, 'gameEdit'])->name('admin-cheat-game-edit');
+Route::any('/admin/cheats/games/delete/{id}', [App\Http\Controllers\Admin\CheatController::class, 'gameDelete'])->name('admin-cheat-game-delete');
+
+Route::any('/admin/cheats/devices', [App\Http\Controllers\Admin\CheatController::class, 'device'])->name('admin-cheat-devices');
+Route::any('/admin/cheats/devices/add', [App\Http\Controllers\Admin\CheatController::class, 'deviceAdd'])->name('admin-cheat-device-add');
+Route::any('/admin/cheats/devices/edit/{id}', [App\Http\Controllers\Admin\CheatController::class, 'deviceEdit'])->name('admin-cheat-device-edit');
+Route::any('/admin/cheats/devices/delete/{id}', [App\Http\Controllers\Admin\CheatController::class, 'deviceDelete'])->name('admin-cheat-device-delete');
+
+Route::any('/admin/cheats/codes', [App\Http\Controllers\Admin\CheatController::class, 'code'])->name('admin-cheat-codes');
+Route::any('/admin/cheats/code/add', [App\Http\Controllers\Admin\CheatController::class, 'codeAdd'])->name('admin-cheat-code-add');
+Route::any('/admin/cheats/code/edit/{id}', [App\Http\Controllers\Admin\CheatController::class, 'codeEdit'])->name('admin-cheat-code-edit');
+Route::any('/admin/cheats/code/delete/{id}', [App\Http\Controllers\Admin\CheatController::class, 'codeDelete'])->name('admin-cheat-code-delete');
+
 Route::any('/admin/users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('admin-users');
 Route::any('/admin/users/add', [App\Http\Controllers\Admin\UserController::class, 'add'])->name('admin-user-add');
 Route::any('/admin/users/edit/{id}', [App\Http\Controllers\Admin\UserController::class, 'edit'])->name('admin-user-edit');

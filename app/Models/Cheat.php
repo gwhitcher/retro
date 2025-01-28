@@ -22,12 +22,26 @@ class Cheat extends Model {
             ->first();
     }
 
-    public static function getGames($id, $order = 'name', $direction = 'asc') {
+    public static function getGames($order = 'name', $direction = 'asc') {
+        return DB::connection('mariadb_cheats')
+            ->table('games')
+            ->orderBy($order, $direction)
+            ->get();
+    }
+
+    public static function getGamesBySystemID($id, $order = 'name', $direction = 'asc') {
         return DB::connection('mariadb_cheats')
             ->table('games')
             ->where('system_id', $id)
             ->orderBy($order, $direction)
             ->get();
+    }
+
+    public static function getGamesPaginated($count = 25, $order = 'name', $direction = 'asc') {
+        return DB::connection('mariadb_cheats')
+            ->table('games')
+            ->orderBy($order, $direction)
+            ->paginate($count);
     }
 
     public static function getGame($id) {
@@ -44,7 +58,28 @@ class Cheat extends Model {
             ->first();
     }
 
-    public static function getCodes($id, $order = 'name', $direction = 'asc') {
+    public static function getDevices($order = 'name', $direction = 'asc') {
+        return DB::connection('mariadb_cheats')
+            ->table('devices')
+            ->orderBy($order, $direction)
+            ->get();
+    }
+
+    public static function getCodes($order = 'name', $direction = 'asc') {
+        return DB::connection('mariadb_cheats')
+            ->table('codes')
+            ->orderBy($order, $direction)
+            ->get();
+    }
+
+    public static function getCodesPaginated($count = 25, $order = 'name', $direction = 'asc') {
+        return DB::connection('mariadb_cheats')
+            ->table('codes')
+            ->orderBy($order, $direction)
+            ->paginate($count);
+    }
+
+    public static function getCodesByGameID($id, $order = 'name', $direction = 'asc') {
         return DB::connection('mariadb_cheats')
             ->table('codes')
             ->where('game_id', $id)
@@ -99,6 +134,24 @@ class Cheat extends Model {
                     .'  name: '.$cheat->name.chr(10)
                     .'  code: '.$code.chr(10)
                     .chr(10);
+            }
+            Storage::disk('public')->put('cheats/cheats.cht', $data);
+            return true;
+        }
+        elseif(!empty($cheats) && is_array($cheats) && !empty($type) && $type == 'cht_ra') {
+            $count = count($cheats);
+            $data = 'cheats = '.$count.chr(10).chr(10);
+            $int = 0;
+            foreach($cheats as $cheat) {
+                $cheat = Cheat::getCode($cheat);
+                $code = str_replace('\n', '', $cheat->code);
+                $data
+                    .= 'cheat'.$int.'_desc = "'.$cheat->name.'"'
+                    .chr(10)
+                    .'cheat'.$int.'_code = "'.$code.'"'
+                    .chr(10)
+                    .'cheat'.$int.'_enable = false';
+                $int++;
             }
             Storage::disk('public')->put('cheats/cheats.cht', $data);
             return true;
